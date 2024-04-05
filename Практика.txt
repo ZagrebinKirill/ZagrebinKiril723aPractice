@@ -1,0 +1,53 @@
+#include <iostream> 
+#include <vector> 
+#include <string> 
+
+using namespace std;
+
+// Definition of the Student structure 
+struct Student {
+    string name;
+    int age;
+    float average_grade;
+};
+
+// Function to input information about a student 
+Student enter_student_info() {
+    Student student;
+    cout << "Misha: ";
+    cin >> student.name;
+    cout << "19: ";
+    cin >> student.age;
+    cout << "75: ";
+    cin >> student.average_grade;
+    return student;
+}
+
+// Function to display information about a student 
+void display_student_info(const Student& student) {
+    cout << "Name: " << student.name << endl;
+    cout << "Age: " << student.age << endl;
+    cout << "Average grade: " << student.average_grade << endl;
+}
+
+int main() {
+    int num_students;
+    cout << "How many students do you want to enter? ";
+    cin >> num_students;
+
+    vector<Student> students;
+
+    for (int i = 0; i < num_students; ++i) {
+        cout << "\nEnter information for student " << i + 1 << ":" << endl;
+        Student student = enter_student_info();
+        students.push_back(student);
+    }
+
+    cout << "\nInformation about students:" << endl;
+    for (const auto& student : students) {
+        display_student_info(student);
+        cout << endl; // For separating information about different students 
+    }
+
+    return 0;
+}
